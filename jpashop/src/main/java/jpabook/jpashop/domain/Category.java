@@ -26,7 +26,7 @@ public class Category {
     private List<Item> items = new ArrayList<>();
 
     //셀프 양방향 매핑
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
