@@ -21,7 +21,7 @@ public abstract class Item {
 
     private String name;
     private int price;
-    private int stockQuantity;
+    private int stockQuantity; //재고수량
 
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
@@ -38,7 +38,7 @@ public abstract class Item {
     /**
      * stock 감소
      */
-    private void removeStock(int quantity) {
+    public void removeStock(int quantity) {
         int restStock = this.stockQuantity - quantity;
         if(restStock < 0) {
             throw new NotEnoughStockException("need more stock");
