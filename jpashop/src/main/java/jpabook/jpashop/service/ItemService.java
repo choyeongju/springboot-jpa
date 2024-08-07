@@ -20,6 +20,14 @@ public class ItemService {
         itemRepository.save(item);
     }
 
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) { //param은 준영속 상태의 엔티티
+        Item findItem = itemRepository.findOne(itemId); //findItem은 영속 상태의 엔티티다!
+        findItem.setName(name);
+        findItem.setPrice(price);
+        findItem.setStockQuantity(stockQuantity);
+    }
+
     public List<Item> findItems() {
         return itemRepository.findAll();
     }
